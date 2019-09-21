@@ -1,0 +1,26 @@
+{
+  "name": "Read.concat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production"
+  },
+  "devDependencies": {
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JamesSunTao/Read.concat.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JamesSunTao/Read.concat/issues"
+  },
+  "homepage": "https://github.com/JamesSunTao/Read.concat#readme"
+ 
+}
