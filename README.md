@@ -41,7 +41,6 @@
         }
     ```
 
-<<<<<<< HEAD
   ##  Code Splitting    
  7. 在 webpack4 之前是使用 commonsChunkPlugin 来拆分公共代码，v4 之后被废弃，并使用 splitChunksPlugins
  ```
@@ -70,7 +69,29 @@
  13. npm install postcss-loader autoprefixer --save-dev （为 CSS 加上浏览器前缀）
 
 
+## JS Tree Shaking  （删除js中没有被引用的代码模块，JS 的 Tree Shaking 依赖的是 ES6 的模块系统（比如：import 和 export）
 
-=======
-  7.     
->>>>>>> 92759b8b50e1ee7dee113a4caf765cd023cad2d3
+14. 字面意思是摇树，项目中没有使用的代码会在打包的时候丢掉。JS 的 Tree Shaking 依赖的是 ES6 的模块系统（比如：import 和 export） ,(按需要引入js模块) 安装相对应的es模块，例如lodash相对应的模块为：lodash-es
+
+## CSS Tree Shaking
+
+14. npm i glob-all purify-css purifycss-webpack --save-dev  (glob-all 的作用就是帮助 PurifyCSS 进行路径处理，定位要做 Tree Shaking 的路径文件。)
+
+15. npm install url-loader file-loader --save-dev 图片处理和 base64 编码 
+> url-loader 依赖 file-loader，url-loader 可以看作是增强版的 file-loader
+
+# 图片压缩
+16. npm i image-webpack-loader --save-dev
+
+# 生成雪碧图
+17. npm i postcss-loader postcss-sprites --save-dev (雪碧图要配合 css 代码进行定制化使用。要通过 css 代码在雪碧图上精准定位需要的图片)
+
+# 字体文件处理
+18. 配置loadder即可
+
+# 开发模式与 webpack-dev-server
+19. npm i webpack-dev-server --save-dev
+
+
+
+

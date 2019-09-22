@@ -1,7 +1,28 @@
-body{background: pink;}
-.example {
-    display: grid;
-    transition: all 0.5s;
-    user-select: none;
-    background: linear-gradient(to bottom, white, black);
-  }
+/* base.css */
+html {
+  background: red;
+}
+
+.box {
+  height: 200px;
+  width: 200px;
+  border-radius: 3px;
+  background: green;
+}
+
+#box-big {
+  height: 300px;
+  width: 300px;
+  border-radius: 5px;
+  background: red;
+  background: url('../images/small1.jpg');
+  background-size: cover;
+}
+
+.box-small {
+  height: 100px;
+  width: 100px;
+  border-radius: 2px;
+  background: yellow;
+  background: url('../images/small1.jpg');
+}

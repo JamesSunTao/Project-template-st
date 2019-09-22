@@ -1,24 +1,24 @@
 const path = require('path');
+const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');// 将 css 单独打包成文件
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin') // 压缩 css
+
 
 const entryDir = path.resolve(__dirname,'src');
 const outputDir = path.resolve(__dirname, 'dist');
 
 module.exports = {
     // mode: 'development',
+    devtool: "cheap-module-eval-source-map",
     entry: path.resolve(entryDir,'index.js'),
     output: {
         path: outputDir,
         filename: '[name].bundle.js', // 代码打包后的文件名
         chunkFilename: '[name].js' // 代码拆分后的文件名
     },
-    optimization: { // 用于实现代码分割
-        splitChunks: {
-          chunks: 'all'
-        }
+    externals:{
+      'jquery':'window.jQuery'
     },
     plugins: [
         new CleanWebpackPlugin(), // 默认情况下，此插件将删除 webpack output.path目录中的所有文件，以及每次成功重建后所有未使用的 webpack 资产。
@@ -39,12 +39,11 @@ module.exports = {
             filename: '[name].css',
             chunkFilename: '[id].css'
         }),
-        new OptimizeCssAssetsPlugin({
-            assetNameRegExp: /\.css$/g,
-            cssProcessor: require('cssnano'), //用于优化\最小化 CSS 的 CSS处理器，默认为 cssnano           
-          })
+        new webpack.ProvidePlugin({                
+            $: "jquery",               
+            jQuery: "jquery",                
+        })
       
-       
     ],
     module: {
         rules: [
@@ -71,6 +70,42 @@ module.exports = {
                 'sass-loader',
             ],
           },
+          {
+            test: /\.(png|jpg|jpeg|gif)$/,
+            use: [
+              {
+                loader: 'url-loader',
+                options: {
+                  name: '[name]-[hash:5].min.[ext]',
+                  outputPath: '/static/images/', //输出到 images 文件夹
+                  limit: 20000 //把小于 20kb 的文件转成 Base64 的格式
+                }
+              }
+            ]
+          },
+          {
+            test: /\.(eot|woff2?|ttf|svg)$/,
+            use: [
+              {
+                loader: 'url-loader',
+                options: {
+                  name: '[name]-[hash:5].min.[ext]',
+                  limit: 5000, // fonts file size <= 5KB, use 'base64'; else, output svg file
+                  publicPath: 'fonts/',
+                  outputPath: '/static/fonts/'
+                }
+              }
+            ]
+          },
+          {
+            test: require.resolve('jquery'),
+            use: {
+              loader: 'expose-loader',
+              options: '$'
+            }
+          }
+    
+
         ]
       }
       
