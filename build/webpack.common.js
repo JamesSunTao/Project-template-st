@@ -5,8 +5,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');// 将 css 单独打包成文件
 
 
-const entryDir = path.resolve(__dirname,'src');
-const outputDir = path.resolve(__dirname, 'dist');
+const entryDir = path.resolve(__dirname,'../src');
+const outputDir = path.resolve(__dirname, '../dist');
 
 module.exports = {
     // mode: 'development',
