@@ -1,7 +1,7 @@
 # Read.concat
 阅读项目
 
-## 项目搭建步骤
+## 项目搭建步骤 (本项目使用sass)
   1. npm init ---项目初始化
   2. npm i webpack webpack-cli --save-dev  (如果不装 webpack-cli 是无法在命令行里使用 webpack 的)
   3. npm install clean-webpack-plugin --save-dev (删除上次打包生成的文件)
