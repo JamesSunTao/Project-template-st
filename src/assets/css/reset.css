@@ -1,6 +1,6 @@
 /* base.css */
 html {
-  background: red;
+  background: gray;
 }
 
 .box {
@@ -15,7 +15,7 @@ html {
   width: 300px;
   border-radius: 5px;
   background: red;
-  background: url('../images/small1.jpg');
+  background: url('../images/4.jpg');
   background-size: cover;
 }
 

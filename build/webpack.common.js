@@ -17,8 +17,16 @@ module.exports = {
         filename: '[name].bundle.js', // 代码打包后的文件名
         chunkFilename: '[name].js' // 代码拆分后的文件名
     },
-    externals:{
-      'jquery':'window.jQuery'
+    resolve: {
+      // 后缀自动补全
+      extensions: ['.js', '.vue'],
+      alias: {
+        // vue官网有说明      
+        'vue$': 'vue/dist/vue.esm.js',
+        'vue': 'vue/dist/vue.esm.js',
+        // 定义@符号来指代src目录
+        '@': path.resolve(__dirname, 'src')
+      }
     },
     plugins: [
         new CleanWebpackPlugin(), // 默认情况下，此插件将删除 webpack output.path目录中的所有文件，以及每次成功重建后所有未使用的 webpack 资产。
@@ -40,10 +48,10 @@ module.exports = {
             chunkFilename: '[id].css'
         }),
         new webpack.ProvidePlugin({                
-            $: "jquery",               
-            jQuery: "jquery",                
-        })
-      
+            '$': "jquery",               
+            'jQuery': "jquery", 
+            'window.jQuery': 'jquery'               
+        })      
     ],
     module: {
         rules: [
@@ -76,8 +84,8 @@ module.exports = {
               {
                 loader: 'url-loader',
                 options: {
-                  name: '[name]-[hash:5].min.[ext]',
-                  outputPath: '/static/images/', //输出到 images 文件夹
+                  name: '[name]-[hash:5].[ext]',
+                  outputPath: 'static/images', //输出到 images 文件夹
                   limit: 20000 //把小于 20kb 的文件转成 Base64 的格式
                 }
               }
@@ -92,7 +100,7 @@ module.exports = {
                   name: '[name]-[hash:5].min.[ext]',
                   limit: 5000, // fonts file size <= 5KB, use 'base64'; else, output svg file
                   publicPath: 'fonts/',
-                  outputPath: '/static/fonts/'
+                  outputPath: 'static/fonts/'
                 }
               }
             ]
@@ -104,8 +112,6 @@ module.exports = {
               options: '$'
             }
           }
-    
-
         ]
       }
       
