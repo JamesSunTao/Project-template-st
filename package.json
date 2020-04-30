@@ -49,6 +49,6 @@
     "@babel/polyfill": "^7.6.0",
     "@babel/runtime": "^7.6.0",
     "core-js": "^3.2.1",
-    "jquery": "^3.4.1"
+    "jquery": "^3.5.0"
   }
 }
