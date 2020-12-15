@@ -5,10 +5,7 @@
   1. npm init ---项目初始化
   2. npm i webpack webpack-cli --save-dev  (如果不装 webpack-cli 是无法在命令行里使用 webpack 的)
   3. npm install clean-webpack-plugin --save-dev (删除上次打包生成的文件)
-<<<<<<< HEAD
   ### 用 Babel 7 转译 ES6
-=======
->>>>>>> 92759b8b50e1ee7dee113a4caf765cd023cad2d3
   4. npm i @babel/core babel-loader @babel/preset-env @babeplugin-transform-runtime --save-dev (处理es6语法转换)
     1. @babel/core
     2. @babel/preset-env: 包含 ES6、7 等版本的语法转化规则
@@ -91,6 +88,14 @@
 
 # 开发模式与 webpack-dev-server
 19. npm i webpack-dev-server --save-dev
+
+### 用 Babel 7 转译 ES6
+  ```
+    {
+      "presets": ["@babel/preset-env"],
+      "plugins": ["@babel/plugin-transform-runtime"]
+    } 
+  ```
 
 
 
