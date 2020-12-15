@@ -89,12 +89,11 @@
 # 开发模式与 webpack-dev-server
 19. npm i webpack-dev-server --save-dev
 
-### 用 Babel 7 转译 ES6
+### vkRem
+ 设置根结点font-size
   ```
-    {
-      "presets": ["@babel/preset-env"],
-      "plugins": ["@babel/plugin-transform-runtime"]
-    } 
+    import {vkRem} form '@parent/parent-jsdk'
+    vkRem.setRem()
   ```
 
 
